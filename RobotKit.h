@@ -1,5 +1,5 @@
 /* @author: Tomas de Camino Beck
- * April 2016 
+ * April 2016
  * www.funcostarica.org
 
 Made for teaching poruposes www.funcostarica.org
@@ -9,7 +9,24 @@ Copyright (c) 2016 Tomas de-Camino-Beck
 
 //use remote library
 #include "IRremote.h"
+#include "Constants.h"
 
+IRrecv* irrecv;
+void startRemote(uint8_t pin){
+  //irrecv.changePin(0);
+  irrecv = new IRrecv(pin);
+  irrecv->enableIRIn();
+}
+
+uint32_t getRemote(){
+  uint32_t resp = 0;
+  decode_results results;
+  if (irrecv->decode(&results)) {
+    resp = results.value;
+    irrecv->resume();
+  }
+  return resp;
+}
 
 //Motor pin aassignments for S4A EDU controller
 // http://www.crcibernetica.com/s4a-edu-robotic-controller/
@@ -17,6 +34,7 @@ Copyright (c) 2016 Tomas de-Camino-Beck
 #define RIGHTDIR 11
 #define LEFTSPEED 5
 #define RIGHTSPEED 6
+
 
 
 //Run this function on the setup to assign pins
@@ -63,7 +81,7 @@ void backward(int mSpeed) {
   analogWrite(RIGHTSPEED, mSpeed);
 
 }
-  
+
 void backward(int mSpeed, int t) {
   digitalWrite(LEFTDIR, HIGH);
   digitalWrite(RIGHTDIR, HIGH);
@@ -117,7 +135,7 @@ void stopMotors() {
   analogWrite(RIGHTSPEED, 0);
 }
 
-//moves randomly forward 
+//moves randomly forward
 void randomForward(int t){
   int l = random(0,100);
   int r = random(0,100);
@@ -151,4 +169,3 @@ void pointLight(int sensorPin){
   int right = analogRead(A0);
   if(right>left) pivotLeft(100,120);
 }
-
