@@ -3,39 +3,32 @@
 */
 
 #include <RobotKit.h>
-#include <IRremote.h>
 
 int RECV_PIN = 7;
-
-IRrecv irrecv(RECV_PIN);
-
-decode_results results;
 
 void setup() {
   // put your setup code here, to run once:
   setMotors();
-  irrecv.enableIRIn();
+  irInit(RECV_PIN);
   Serial.begin(9600);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  if (irrecv.decode(&results)) {
-    if (results.value == 16718055) {
+  unsigned long ul = irGet();
+  if (ul) {
+    if (ul == REMOTE_2) {
       forward(100, 250);
     }
-    if (results.value == 16730805) {
+    if (ul == REMOTE_8) {
       backward(100, 250);
     }
-    if (results.value == 16716015) {
+    if (ul == REMOTE_4) {
       pivotLeft(100, 250);
     }
-    if (results.value == 16734885) {
+    if (ul == REMOTE_6) {
       pivotRight(100, 250);
     }
-    irrecv.resume();
   }
   stopMotors();
-
-
 }
