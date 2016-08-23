@@ -1,17 +1,35 @@
-/* @author: Tomas de Camino Beck
+/* @author: Tomas de Camino Beck & Alex Roberto Vargas Benamburg
  * April 2016
  * www.funcostarica.org
 
 Made for teaching poruposes www.funcostarica.org
 Released under MIT License
-Copyright (c) 2016 Tomas de-Camino-Beck
+Copyright (c) 2016 Tomas de-Camino-Beck & Alex Roberto Vargas Benamburg
  */
 
 //use remote library
 #include "IRremote.h"
+#include "Adafruit_NeoPixel.h"
 #include "Constants.h"
 
+Adafruit_NeoPixel* neoLed;
 IRrecv* irrecv;
+
+void startLED(uint8_t pin){
+   neoLed = new Adafruit_NeoPixel(1, pin, NEO_GRBW + NEO_KHZ800);
+   neoLed->begin();
+   neoLed->show();
+}
+
+void setLED(uint8_t red, uint8_t green, uint8_t blue, uint8_t brightness){
+  neoLed->setPixelColor(0,neoLed->Color(red, green, blue,brightness));
+  neoLed->show();
+}
+
+void setLED(uint8_t red, uint8_t green, uint8_t blue){
+  setLED(red, green, blue,255);
+}
+
 void startRemote(uint8_t pin){
   //irrecv.changePin(0);
   irrecv = new IRrecv(pin);
