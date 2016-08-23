@@ -9,13 +9,13 @@ int RECV_PIN = 7;
 void setup() {
   // put your setup code here, to run once:
   setMotors();
-  irInit(RECV_PIN);
+  startRemote(RECV_PIN);
   Serial.begin(9600);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  unsigned long ul = irGet();
+  unsigned long ul = getRemote();
   if (ul) {
     if (ul == REMOTE_2) {
       forward(100, 250);
