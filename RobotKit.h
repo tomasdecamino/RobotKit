@@ -15,44 +15,12 @@ Copyright (c) 2016 Tomas de-Camino-Beck & Alex Roberto Vargas Benamburg
 Adafruit_NeoPixel* neoLed;
 IRrecv* irrecv;
 
-void startLED(uint8_t pin){
-   neoLed = new Adafruit_NeoPixel(1, pin, NEO_GRBW + NEO_KHZ800);
-   neoLed->begin();
-   neoLed->show();
-}
-
-void setLED(uint8_t red, uint8_t green, uint8_t blue, uint8_t brightness){
-  neoLed->setPixelColor(0,neoLed->Color(red, green, blue,brightness));
-  neoLed->show();
-}
-
-void setLED(uint8_t red, uint8_t green, uint8_t blue){
-  setLED(red, green, blue,255);
-}
-
-void startRemote(uint8_t pin){
-  //irrecv.changePin(0);
-  irrecv = new IRrecv(pin);
-  irrecv->enableIRIn();
-}
-
-uint32_t getRemote(){
-  uint32_t resp = 0;
-  decode_results results;
-  if (irrecv->decode(&results)) {
-    resp = results.value;
-    irrecv->resume();
-  }
-  return resp;
-}
-
 //Motor pin aassignments for S4A EDU controller
 // http://www.crcibernetica.com/s4a-edu-robotic-controller/
 #define LEFTDIR 10
 #define RIGHTDIR 11
 #define LEFTSPEED 5
 #define RIGHTSPEED 6
-
 
 
 //Run this function on the setup to assign pins
@@ -64,7 +32,6 @@ void setMotors() {
   digitalWrite(LEFTDIR, LOW);
   digitalWrite(RIGHTDIR, LOW);
 }
-
 
 //*******Movement functions ********/
 //two options with or without delay time
@@ -171,7 +138,7 @@ void randomPivot(int p, int t){
 //***** sensor functions ********
 
 void setSensor(int sensorPin){
- pinMode(sensorPin,INPUT);
+ pinMode(sensorPin,INPUT_PULLUP);
 }
 
 //for analog pins
@@ -186,4 +153,35 @@ void pointLight(int sensorPin){
   pivotRight(100,100);
   int right = analogRead(A0);
   if(right>left) pivotLeft(100,120);
+}
+
+void startLED(uint8_t pin){
+   neoLed = new Adafruit_NeoPixel(1, pin, NEO_GRBW + NEO_KHZ800);
+   neoLed->begin();
+   neoLed->show();
+}
+
+void setLED(uint8_t red, uint8_t green, uint8_t blue, uint8_t brightness){
+  neoLed->setPixelColor(0,neoLed->Color(red, green, blue,brightness));
+  neoLed->show();
+}
+
+void setLED(uint8_t red, uint8_t green, uint8_t blue){
+  setLED(red, green, blue,255);
+}
+
+void startRemote(uint8_t pin){
+  //irrecv.changePin(0);
+  irrecv = new IRrecv(pin);
+  irrecv->enableIRIn();
+}
+
+uint32_t getRemote(){
+  uint32_t resp = 0;
+  decode_results results;
+  if (irrecv->decode(&results)) {
+    resp = results.value;
+    irrecv->resume();
+  }
+  return resp;
 }
