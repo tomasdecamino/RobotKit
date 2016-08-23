@@ -15,14 +15,6 @@ Copyright (c) 2016 Tomas de-Camino-Beck & Alex Roberto Vargas Benamburg
 Adafruit_NeoPixel* neoLed;
 IRrecv* irrecv;
 
-//Motor pin aassignments for S4A EDU controller
-// http://www.crcibernetica.com/s4a-edu-robotic-controller/
-#define LEFTDIR 10
-#define RIGHTDIR 11
-#define LEFTSPEED 5
-#define RIGHTSPEED 6
-
-
 //Run this function on the setup to assign pins
 void setMotors() {
   pinMode(LEFTDIR, OUTPUT);

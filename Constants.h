@@ -29,3 +29,10 @@ Copyright (c) 2016  Alex Roberto Vargas Benamburg
 #define REMOTE_CHA 16736925 //FF629D        ch
 #define REMOTE_CHAPLUS 16769565 //FFE21D        ch+
 #define REMOTE_HOLD 4294967295 //FFFFFFFF    hold any button
+
+//Motor pin aassignments for S4A EDU controller
+// http://www.crcibernetica.com/s4a-edu-robotic-controller/
+#define LEFTDIR 10
+#define RIGHTDIR 11
+#define LEFTSPEED 5
+#define RIGHTSPEED 6
