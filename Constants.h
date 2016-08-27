@@ -7,6 +7,7 @@ Released under MIT License
 Copyright (c) 2016  Alex Roberto Vargas Benamburg
  */
 
+//Constants for IR Remote
 #define REMOTE_1 16724175 //FF30CF        1
 #define REMOTE_2 16718055 //FF18E7        2
 #define REMOTE_3 16743045 //FF7A85        3
@@ -30,7 +31,7 @@ Copyright (c) 2016  Alex Roberto Vargas Benamburg
 #define REMOTE_CHAPLUS 16769565 //FFE21D        ch+
 #define REMOTE_HOLD 4294967295 //FFFFFFFF    hold any button
 
-//Motor pin aassignments for S4A EDU controller
+//Constants for Motor pin aassignments in S4A EDU controller
 // http://www.crcibernetica.com/s4a-edu-robotic-controller/
 #define LEFTDIR 10
 #define RIGHTDIR 11
