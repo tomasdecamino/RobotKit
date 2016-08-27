@@ -4,7 +4,7 @@
 
 Made for teaching poruposes www.funcostarica.org
 Released under MIT License
-Copyright (c) 2016  Alex Roberto Vargas Benamburg
+Copyright (c) 2016  Alex Roberto Vargas Benamburg (vbalex.com)
  */
 
 //Constants for IR Remote
