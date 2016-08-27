@@ -7,11 +7,12 @@ Released under MIT License
 Copyright (c) 2016 Tomas de-Camino-Beck & Alex Roberto Vargas Benamburg
  */
 
-//use remote library
+#include "Constants.h"
 #include "IRremote.h"
 #include "Adafruit_NeoPixel.h"
-#include "Constants.h"
+#include "UltrasonicSensor.h"
 
+//Pointers for some librarys
 Adafruit_NeoPixel* neoLed;
 IRrecv* irrecv;
 
@@ -147,21 +148,23 @@ void pointLight(int sensorPin){
   if(right>left) pivotLeft(100,120);
 }
 
+//functions for NeoPixel
 void startLED(uint8_t pin){
    neoLed = new Adafruit_NeoPixel(1, pin, NEO_GRBW + NEO_KHZ800);
    neoLed->begin();
    neoLed->show();
 }
-
+//set color and brightness
 void setLED(uint8_t red, uint8_t green, uint8_t blue, uint8_t brightness){
   neoLed->setPixelColor(0,neoLed->Color(red, green, blue,brightness));
   neoLed->show();
 }
-
+//set color at max brightness
 void setLED(uint8_t red, uint8_t green, uint8_t blue){
   setLED(red, green, blue,255);
 }
 
+//functions for IR Remote
 void startRemote(uint8_t pin){
   //irrecv.changePin(0);
   irrecv = new IRrecv(pin);
