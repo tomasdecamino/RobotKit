@@ -102,7 +102,7 @@ IRrecv::IRrecv (int recvpin)
 	irparams.blinkflag = 0;
 }
 
-IRrecv::changePin(int recvpin){
+void IRrecv::changePin(int recvpin){
 	irparams.recvpin = recvpin;
 }
 

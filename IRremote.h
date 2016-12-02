@@ -173,7 +173,7 @@ class IRrecv
 	public:
 		IRrecv (int recvpin) ;
 		IRrecv (int recvpin, int blinkpin);
-		changePin(int pin);
+		void changePin(int pin);
 		void  blink13    (int blinkflag) ;
 		int   decode     (decode_results *results) ;
 		void  enableIRIn ( ) ;
