@@ -6,8 +6,7 @@
 void setup() {
   // put your setup code here, to run once:
   setMotors(); //prepara los motores
-  setSensor(A0); //prepara el sensor conectado a aA0
-  irrecv.enableIRIn();
+  setSensor(A0); //prepara el sensor conectado a A0
 }
 
 void loop() {
