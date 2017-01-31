@@ -141,11 +141,11 @@ int readSensor(int sensorPin){
 
 //a simple algorithm so the robot turns to the highest light source
 void pointLight(int sensorPin){
-  pivotLeft(100,50);
-  int left = analogRead(A0);
-  pivotRight(100,100);
-  int right = analogRead(A0);
-  if(right>left) pivotLeft(100,120);
+  pivotLeft(100,100);
+  int left = analogRead(sensorPin);
+  pivotRight(100,200);
+  int right = analogRead(sensorPin);
+  if(right>left) pivotLeft(100,100);
 }
 
 //functions for NeoPixel
@@ -178,5 +178,6 @@ uint32_t getRemote(){
     resp = results.value;
     irrecv->resume();
   }
+  Serial.println(resp);
   return resp;
 }
