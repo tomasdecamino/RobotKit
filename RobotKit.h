@@ -178,6 +178,5 @@ uint32_t getRemote(){
     resp = results.value;
     irrecv->resume();
   }
-  Serial.println(resp);
   return resp;
 }
