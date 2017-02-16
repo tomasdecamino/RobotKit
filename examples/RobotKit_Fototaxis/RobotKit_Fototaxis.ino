@@ -9,6 +9,7 @@ void setup() {
   setMotors(); //prepara los motores
   setSensor(A0); //prepara el sensor conectado a aA0
   luzAhora = readSensor(A0);//para inicializar
+  randomSeed(A0);//punto de inicio del generador de aleatorios
 }
 
 void loop() {
