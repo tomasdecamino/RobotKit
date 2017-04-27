@@ -23,6 +23,11 @@ Instrucciones para instalar librerías en Arduino IDE la encuentran en este link
 - setSensor(int sensorPin) sets pinMode INPUT for pin sensorPin
 - readSensor(int sensorPin) reads an analog sensor conected in sensorPin
 - pointLight(int sensorPin) assuming there is a light sensor in sensorPin, rotates the robot to the light
+- startLED(uint8_t pin) setup neopixel pin
+- setLED(uint8_t red, uint8_t green, uint8_t blue)
+- startRemote(uint8_t pin) inicializa el control remoto en el pin
+- getRemote() revive el dato del control
+
 
 ## Usage
 
