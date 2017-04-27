@@ -8,7 +8,7 @@ Instrucciones para instalar librerías en Arduino IDE la encuentran en este link
 
 # Comandos
 
-##Functions
+## Functions
 
 - setMotors(). Called this first inside the setup function to assign motor pins
 - forward(int mSpeed, int t).  Makes both DC motors move forward with speed mSpped for t milliseconds
@@ -24,6 +24,6 @@ Instrucciones para instalar librerías en Arduino IDE la encuentran en este link
 - readSensor(int sensorPin) reads an analog sensor conected in sensorPin
 - pointLight(int sensorPin) assuming there is a light sensor in sensorPin, rotates the robot to the light
 
-##Usage
+## Usage
 
 Inside the setup() section  include the command setMotors(), this will setup all motor pins. Then use movement functions described above in the loop() section of the code
