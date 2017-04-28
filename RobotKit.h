@@ -181,16 +181,6 @@ uint32_t getRemote(){
   return resp;
 }
 
-uint32_t getRemote(){
-  uint32_t resp = 0;
-  decode_results results;
-  if (irrecv->decode(&results)) {
-    resp = results.value;
-    irrecv->resume();
-  }
-  return resp;
-}
-
 float getDistance(){
   updateUtrasonic();
   return getUltrasonic();
