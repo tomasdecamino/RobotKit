@@ -27,6 +27,8 @@ Instrucciones para instalar librerías en Arduino IDE la encuentran en este link
 - setLED(uint8_t red, uint8_t green, uint8_t blue)
 - startRemote(uint8_t pin) inicializa el control remoto en el pin
 - getRemote() revive el dato del control
+- startUltrasonic(int trig, int echo) inicial el sensor ultrasonico
+- getDistance() retorna la distancia en CM como valor float(real)
 
 
 ## Usage
