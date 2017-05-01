@@ -20,7 +20,6 @@ void setup()
 {
   setMotors();
   setSensor(A0);
-  setSensor(A1);
   randomSeed(readSensor(A0));
   //inicia los perceptrones con valores aleatorios
   brain.randomize();
