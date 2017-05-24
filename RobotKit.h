@@ -16,6 +16,11 @@ Copyright (c) 2016 Tomas de-Camino-Beck & Alex Roberto Vargas Benamburg
 Adafruit_NeoPixel* neoLed;
 IRrecv* irrecv;
 
+uint32_t* remoteUsed = REMOTE_1_KEYS;
+
+typedef uint8_t REMOTE_KEY;
+REMOTE_KEY lastKey;
+
 //Run this function on the setup to assign pins
 void setMotors() {
   pinMode(LEFTDIR, OUTPUT);
@@ -171,14 +176,28 @@ void startRemote(uint8_t pin){
   irrecv->enableIRIn();
 }
 
-uint32_t getRemote(){
+void startRemote(uint8_t pin, uint32_t* remote){
+  remoteUsed = remote;
+  startRemote(pin);
+}
+
+REMOTE_KEY getRemote(){
   uint32_t resp = 0;
   decode_results results;
   if (irrecv->decode(&results)) {
     resp = results.value;
     irrecv->resume();
   }
-  return resp;
+  REMOTE_KEY i = REMOTE_NO_KEY;
+  if(resp){
+    for(i=REMOTE_1;remoteUsed[i]!=resp && i<REMOTE_MAX;++i){}
+    if(i==REMOTE_HOLD){
+      i = lastKey;
+    }else{
+      lastKey = i;
+    }
+  }
+  return i;
 }
 
 float getDistance(){

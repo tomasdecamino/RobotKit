@@ -7,28 +7,30 @@
 int RECV_PIN = 7;
 
 void setup() {
-  // put your setup code here, to run once:
   setMotors();
-  startRemote(RECV_PIN);
+  startRemote(RECV_PIN,REMOTE_1_KEYS);
+  //startRemote(RECV_PIN,REMOTE_2_KEYS); usar esta linea si el control no funciona
   Serial.begin(9600);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  unsigned long ul = getRemote();
-  if (ul) {
-    if (ul == REMOTE_2) {
-      forward(100, 250);
-    }
-    if (ul == REMOTE_8) {
-      backward(100, 250);
-    }
-    if (ul == REMOTE_4) {
-      pivotLeft(100, 250);
-    }
-    if (ul == REMOTE_6) {
-      pivotRight(100, 250);
-    }
+  REMOTE_KEY key = getRemote();
+  switch(key){
+    case REMOTE_2:
+      forward(128,100);
+      break;
+    case REMOTE_4:
+      pivotRight(128,100);
+      break;
+    case REMOTE_6:
+      pivotLeft(128,100);
+      break;
+    case REMOTE_8:
+      backward(128,100);
+      break;
+    case REMOTE_HOLD:
+      break;
+    default:
+      stopMotors();
   }
-  stopMotors();
 }
