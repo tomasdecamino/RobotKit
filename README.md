@@ -37,4 +37,4 @@ Inside the setup() section  include the command setMotors(), this will setup all
 
 ## Licence
 
-RobotKit is an open soruce robot. All files and instructions are lcenced under Creatie Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional
+RobotKit is an open source robot. All files and instructions are lcenced under Creatie Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional
