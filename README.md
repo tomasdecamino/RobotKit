@@ -34,3 +34,7 @@ Instrucciones para instalar librerías en Arduino IDE la encuentran en este link
 ## Usage
 
 Inside the setup() section  include the command setMotors(), this will setup all motor pins. Then use movement functions described above in the loop() section of the code
+
+## Licence
+
+RobotKit is an open soruce robot. All files and instructions are lcenced under Creatie Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional
